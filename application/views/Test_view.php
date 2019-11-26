@@ -11,16 +11,19 @@
 </head>
 
 <body>
-
-  <div class="container">
-    <h2>Vertical</h2>
-    <button type="button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+  <div id="colorlib-main">
+    <div style="background-image: url(../public/images/bg_1.jpg);" data-stellar-background-ratio="0.5"></div>
+    <div class="container">
+      <h2>Vertical</h2>
+      <button type="button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+    </div>
+  </div>
 </body>
-
 </html>
+
 <div id="userModal" class="modal fade">
   <div class="modal-dialog">
-    <form id="user_form" method="Post" action="<?php echo base_url() ?>test_con/form_validation">
+    <form id="user_form" method="Post" action="<?php echo base_url() ?>form_validation">
       <?php
       if ($this->uri->segment(2) == "inserted") {
         echo '<p class="text-success">Success</p>';
@@ -28,8 +31,8 @@
       ?>
       <div class="modal-content">
         <div class="modal-header">
+        <h4 class="modal-title">Create Project</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Add User</h4>
         </div>
         <div class="modal-body">
           <label for="projectCode">ProjectCode</label>
@@ -50,28 +53,9 @@
           <br>
         </div>
         <div class="modal-footer">
-          <input type="submit" name="action" class="btn btn-info btn-lg value=" Add" />
+          <input type="submit" name="action" class="btn btn-info btn-lg" value="Add" />
           <button type="button" class="btn btn-default" data-disimiss="modal">close</button>
         </div>
       </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

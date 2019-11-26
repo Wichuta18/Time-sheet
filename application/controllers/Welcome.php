@@ -28,7 +28,40 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('header');
 		$this->load->view('body');
-		$this->load->view('project');
+		$this->load->view('Test_view');
 		$this->load->view('js');
 	}
+	public function form_validation(){
+        // echo 'hello world';
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules("projectCode","projectCode",
+        'required');
+        $this->form_validation->set_rules("projectName","projectName",
+        'required|alpha');
+        $this->form_validation->set_rules("budget","budget",
+        'required');
+        $this->form_validation->set_rules("total","total",
+        'required');
+
+        if($this->form_validation->run()){
+            //true
+            $this->load->model("Test_model");
+            $data = array(
+                "projectCode" =>$this->input->post("projectCode"),
+                "projectName" =>$this->input->post("projectName"),
+                "budget" =>$this->input->post("budget"),
+                "total_dur" =>$this->input->post("total")
+            );
+            $this->Test_model->insert($data);
+
+            redirect(base_url() . "inserted");
+
+        }
+        else{
+            redirect(base_url() . "form_validation");
+        }
+    }
+    public function inserted(){
+        $this->project();
+    }
 }
