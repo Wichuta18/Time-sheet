@@ -16,22 +16,50 @@
     <div class="container">
       <h2>Vertical</h2>
       <button type="button" data-toggle="modal" data-target="#userModal" class="btn btn-info btn-lg">Add</button>
+      <br><br>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tr>
+            <th scope="col">ProjectCode</th>
+            <th scope="col">ProjectName</th>
+            <th scope="col">Budget</th>
+            <th scope="col">Total</th>
+          </tr>
+          <?php
+          if ($select_data->num_rows() > 0) {
+            foreach ($select_data->result() as $row) {
+              ?>
+              <tr>
+                <td><?php echo $row->projectCode; ?></td>
+                <td><?php echo $row->projectName; ?></td>
+                <td><?php echo $row->budget; ?></td>
+                <td><?php echo $row->total_dur; ?></td>
+              </tr>
+            <?php
+              }
+            } else {
+              ?>
+            <tr>
+              <td colspan="3">No Data</td>
+            </tr>
+          <?php
+          }
+          ?>
+        </table>
+      </div>
     </div>
   </div>
 </body>
+
 </html>
+
 
 <div id="userModal" class="modal fade">
   <div class="modal-dialog">
     <form id="user_form" method="Post" action="<?php echo base_url() ?>form_validation">
-      <?php
-      if ($this->uri->segment(2) == "inserted") {
-        echo '<p class="text-success">Success</p>';
-      }
-      ?>
       <div class="modal-content">
         <div class="modal-header">
-        <h4 class="modal-title">Create Project</h4>
+          <h4 class="modal-title">Create Project</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
@@ -57,5 +85,7 @@
           <button type="button" class="btn btn-default" data-disimiss="modal">close</button>
         </div>
       </div>
+    </form>
   </div>
 </div>
+<br><br>

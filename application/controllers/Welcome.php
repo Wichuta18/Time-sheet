@@ -26,9 +26,11 @@ class Welcome extends CI_Controller {
 	}
 	public function project()
 	{
+        $this->load->model("Test_model");
+        $data["select_data"]= $this->Test_model->select_data();
 		$this->load->view('header');
 		$this->load->view('body');
-		$this->load->view('Test_view');
+        $this->load->view('Test_view', $data);
 		$this->load->view('js');
 	}
 	public function form_validation(){

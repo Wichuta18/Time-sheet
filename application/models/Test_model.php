@@ -9,5 +9,9 @@ class Test_model extends CI_Model {
 	}
     function insert($data){
         $this->db->insert("projects",$data);
-    }
+	}
+	function select_data(){
+		$query = $this->db->get("projects");
+		return $query;
+	}
 } 
